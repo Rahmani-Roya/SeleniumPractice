@@ -19,6 +19,7 @@ start_btn.click()
 wait = WebDriverWait(driver, 12)
 
 is_element = wait.until(lambda driver :driver.find_element(By.ID,"delay").get_attribute("value")=="Liftoff!")
+
 if (is_element== True):
     print("&&&&&&&&&&&&&&&test passed&&&&&&&&&&&&&&&&&&&&&&")
 else:
