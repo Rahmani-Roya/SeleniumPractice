@@ -3,7 +3,8 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 # from selenium.webdriver import chrome
-# from selenium.webdriver.support.ui import  WebDriverWait
+from selenium.webdriver.support.ui import  WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach",True)
@@ -61,3 +62,4 @@ submit_btn = driver.find_element(by="xpath", value="//button[@id = 'submit-btn']
 action = ActionChains(driver)
 action.scroll_to_element(submit_btn).perform()
 submit_btn.click()
+driver.switch_to.alert.dismiss()
