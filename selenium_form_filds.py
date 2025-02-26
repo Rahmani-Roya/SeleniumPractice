@@ -13,18 +13,22 @@ form_filds_url = "https://practice-automation.com/form-fields/"
 driver = webdriver.Chrome(options= options, service= service)
 driver.get(form_filds_url)
 driver.maximize_window()
+#  function for find an element with xpath and type on it
+def find_type(xpath, text):
+    element = driver.find_element(by="xpath", value=xpath)
+    element.click()
+    element.send_keys(text)
+# function for find an element with id and click on it
+def find_click(id):
+    element = driver.find_element(by="id", value=id)
+    element.click()
+
 # Enter user name and password
-name_input =driver.find_element(by="xpath", value="//input[@id = 'name-input']")
-name_input.click()
-name_input.send_keys("Roya Rahmani")
-pass_input = driver.find_element(by="xpath", value="//input[@type = 'password']")
-pass_input.click()
-pass_input.send_keys("1234567")
-# Find favorite drink
-drink_checkbox = driver.find_element(by="id", value="drink2")
-drink_checkbox.click()
-drink_checkbox = driver.find_element(by="id", value="drink4")
-drink_checkbox.click()
+find_type("//input[@id = 'name-input']","Roya Rahmani")
+find_type("//input[@type = 'password']","1234567")
+find_click("drink2")
+find_click("drink4")
+
 # Find color radio button
 color_radiobutton = driver.find_element(by="id", value="color1")
 # Scroll to color radiobutton
@@ -44,22 +48,27 @@ answer_dropdown = driver.find_element(by="xpath", value="//option[@data-testid='
 answer_dropdown.click()
 # Find E mail
 email_textbox = driver.find_element(by="id", value="email")
+# Scroll to email text box
 action = ActionChains(driver= driver)
 action.scroll_to_element(email_textbox).perform()
+
 email_textbox.click()
 email_textbox.send_keys("rahmani.roya.pro@gmail.com")
 
 # Find Message
 message_textbox = driver.find_element(by="id", value="message")
+
 action = ActionChains(driver= driver)
 action.scroll_to_element(message_textbox).perform()
+
 message_textbox.click()
 message_textbox.send_keys("it is a Test")
 
 # Find Submit button
-submit_btn = driver.find_element(by="xpath", value="//button[@id = 'submit-btn']")
+submit_btn = driver.find_element(by="id", value="submit-btn")
 # Scroll to Submit button
 action = ActionChains(driver)
 action.scroll_to_element(submit_btn).perform()
+
 submit_btn.click()
 driver.switch_to.alert.dismiss()
