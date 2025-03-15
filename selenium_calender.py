@@ -30,4 +30,4 @@ def select_date(year, month, day):
 
     driver.find_element(by="xpath", value=f"//table//a[@data-date= {day}]").click()
 
-select_date("2023","April", "20")
+select_date("2023","August", "13")
